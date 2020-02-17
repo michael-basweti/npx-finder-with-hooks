@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './components/layouts/Navbar';
 import Users from './components/users/Users';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -15,17 +16,19 @@ class App extends Component {
     title: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired
   }
-  render (){
-    // const name = 'John Doe';
 
-    // const foo = () => 'Bar'
-    // function foo1 (){
-    //   return 'Bar2'
-    // }
-  // const loading = true;
-  // if(loading){
-  //   return <h1>Loading....</h1>;
+  // componentDidMount(){
+  //   axios.get('https://api.github.com/users').then(res => console.log(res.data)
+  //   );
   // }
+
+  async componentDidMount(){
+     const res = await axios.get('https://api.github.com/users');
+     console.log(res);
+     
+  }
+  render (){
+ 
   return (
     <div className="App">
       <Navbar title = 'Github Finder' icon='fab fa-github'/>
